@@ -15,6 +15,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Explore Events", href: "/events" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const NavBar = () => {
