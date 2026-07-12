@@ -116,7 +116,10 @@ export default function ContactForm() {
         onChange={(value) => handleChange("fullName", value)}
       >
         <Label>Full Name</Label>
-        <Input placeholder="Jane Doe" />
+        <Input
+          className={`placeholder:text-muted-foreground`}
+          placeholder="Type your full name"
+        />
         {errors.fullName ? (
           <FieldError>{errors.fullName}</FieldError>
         ) : (
@@ -133,7 +136,10 @@ export default function ContactForm() {
         onChange={(value) => handleChange("email", value)}
       >
         <Label>Email Address</Label>
-        <Input placeholder="jane@example.com" />
+        <Input
+          className={`placeholder:text-muted-foreground`}
+          placeholder="Type your email address"
+        />
         {errors.email ? (
           <FieldError>{errors.email}</FieldError>
         ) : (
@@ -149,7 +155,10 @@ export default function ContactForm() {
         onChange={(value) => handleChange("subject", value)}
       >
         <Label>Subject</Label>
-        <Input placeholder="How can we help?" />
+        <Input
+          className={`placeholder:text-muted-foreground`}
+          placeholder="Type the subject of your message"
+        />
         {errors.subject ? <FieldError>{errors.subject}</FieldError> : null}
       </TextField>
 
@@ -162,7 +171,8 @@ export default function ContactForm() {
       >
         <Label>Message</Label>
         <TextArea
-          placeholder="Tell us a bit more about your request..."
+          className={`placeholder:text-muted-foreground`}
+          placeholder="Type your message here..."
           rows={5}
         />
         {errors.message ? (
