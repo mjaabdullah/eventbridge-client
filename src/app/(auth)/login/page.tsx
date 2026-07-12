@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   FieldError,
@@ -8,6 +9,7 @@ import {
   Label,
   Link,
   TextField,
+  toast,
 } from "@heroui/react";
 import NextLink from "next/link";
 import { useState, type ChangeEvent, type FormEvent } from "react";
@@ -54,7 +56,7 @@ const LoginPage = () => {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const validationErrors = validateForm(formData);
@@ -71,10 +73,15 @@ const LoginPage = () => {
       password: formData.password,
     };
 
-    console.log("Login payload:", loginPayload);
+    const { data, error } = await authClient.signIn.email({
+      ...loginPayload,
+      rememberMe: true,
+      callbackURL: "/",
+    });
 
-    // No backend exists yet, so just simulate a brief submitting state.
-    window.setTimeout(() => setIsSubmitting(false), 800);
+    if (error) {
+      toast.warning(error.message || "Login failed. Please try again.");
+    }
   };
 
   return (

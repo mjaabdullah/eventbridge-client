@@ -106,10 +106,10 @@ const RegisterPage = () => {
       name: registrationPayload.fullName,
       email: registrationPayload.email,
       password: registrationPayload.password,
-      callbackURL: "/",
+      callbackURL: "/login",
     });
 
-    console.log(error, data);
+  
 
     if (data?.user) {
       toast.success("Registration successful!");
