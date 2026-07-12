@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   FieldError,
@@ -8,6 +9,7 @@ import {
   Label,
   Link,
   TextField,
+  toast,
 } from "@heroui/react";
 import NextLink from "next/link";
 import { useState, type ChangeEvent, type FormEvent } from "react";
@@ -37,8 +39,8 @@ const validateForm = (data: RegisterFormData): RegisterFormErrors => {
 
   if (!data.password) {
     errors.password = "Password is required.";
-  } else if (data.password.length < 6) {
-    errors.password = "Password must be at least 6 characters.";
+  } else if (data.password.length < 8) {
+    errors.password = "Password must be at least 8 characters.";
   } else if (!/[A-Z]/.test(data.password)) {
     errors.password = "Password must contain at least one uppercase letter.";
   } else if (!/[a-z]/.test(data.password)) {
@@ -78,7 +80,7 @@ const RegisterPage = () => {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const validationErrors = validateForm(formData);
@@ -100,9 +102,24 @@ const RegisterPage = () => {
       password: formData.password,
     };
 
-    console.log("Registration payload:", registrationPayload);
+    const { data, error } = await authClient.signUp.email({
+      name: registrationPayload.fullName,
+      email: registrationPayload.email,
+      password: registrationPayload.password,
+      callbackURL: "/",
+    });
 
-    window.setTimeout(() => setIsSubmitting(false), 800);
+    console.log(error, data);
+
+    if (data?.user) {
+      toast.success("Registration successful!");
+      setIsSubmitting(false);
+    }
+
+    if (error) {
+      toast.warning(`Registration failed: ${error.message}`);
+      setIsSubmitting(false);
+    }
   };
 
   return (
