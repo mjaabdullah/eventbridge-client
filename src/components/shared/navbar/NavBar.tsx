@@ -71,7 +71,7 @@ const NavBar = () => {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   const closeMenu = () => setIsMenuOpen(false);
-  console.log("user", user);
+
 
   const handleLogout = () => {
     closeMenu();
