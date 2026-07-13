@@ -1,4 +1,4 @@
-import type { FooterSocialLink } from "@/types/footer-types";
+import type { FooterSocialLink } from "./footer-types";
 
 interface SocialLinksProps {
   links: FooterSocialLink[];
@@ -6,7 +6,10 @@ interface SocialLinksProps {
 
 export default function SocialLinks({ links }: SocialLinksProps) {
   return (
-    <ul className="flex items-center gap-3" aria-label="EventBridge on social media">
+    <ul
+      className="flex items-center gap-3"
+      aria-label="EventBridge on social media"
+    >
       {links.map(({ label, href, icon: Icon }) => (
         <li key={label}>
           <a
