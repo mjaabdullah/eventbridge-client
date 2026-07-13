@@ -158,10 +158,7 @@ const AddEventForm = () => {
         >
           <Label className="text-sm font-medium text-[#0F172A]">Category</Label>
           <Select.Trigger className="flex w-full items-center justify-between rounded-lg border border-[#E2E8F0] bg-white px-3 py-2.5 text-sm text-[#0F172A] outline-none transition-colors focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20">
-            <Select.Value
-              placeholder="Select a category"
-              className="text-[#0F172A] data-[placeholder]:text-[#0F172A]/40"
-            />
+            <Select.Value className="text-[#0F172A] data-[placeholder]:text-[#0F172A]/40" />
             <Select.Indicator />
           </Select.Trigger>
           <Select.Popover className="w-[--trigger-width] rounded-lg border border-[#E2E8F0] bg-white p-1 shadow-md">
