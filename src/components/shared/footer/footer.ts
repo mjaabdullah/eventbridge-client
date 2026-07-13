@@ -4,7 +4,7 @@ import type {
   FooterContactInfo,
   FooterLink,
   FooterSocialLink,
-} from "@/types/footer-types";
+} from "./footer-types";
 
 export const quickLinks: FooterLink[] = [
   { label: "Home", href: "/" },
