@@ -126,7 +126,6 @@ export default function AboutPage() {
         </p>
         <div className="mt-8">
           <Button
-            asChild
             variant="primary"
             size="lg"
             className="bg-primary text-white hover:bg-primary/90"
