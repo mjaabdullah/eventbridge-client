@@ -23,8 +23,8 @@ const NAV_ITEMS: NavItem[] = [
 
 // Extra links shown only when a user is logged in
 const USER_NAV_ITEMS: NavItem[] = [
-  { label: "Add Item", href: "/items/add" },
-  { label: "Manage Items", href: "/items/manage" },
+  { label: "Add Event", href: "/events/add" },
+  { label: "Manage Events", href: "/events/manage" },
   { label: "Profile", href: "/profile" },
 ];
 
@@ -52,7 +52,7 @@ const NavBar = () => {
     return () => {
       isMounted = false;
     };
-  }, [user]);
+  }, []);
 
   if (!!isUserLoading) {
     return (
@@ -71,6 +71,7 @@ const NavBar = () => {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   const closeMenu = () => setIsMenuOpen(false);
+  console.log("user", user);
 
   const handleLogout = () => {
     closeMenu();
