@@ -1,17 +1,13 @@
 import Link from "next/link";
 
-import type { FooterLink } from "@/types/footer-types";
+import type { FooterLink } from "./footer-types";
 
 interface FooterLinkColumnProps {
   title: string;
   links: FooterLink[];
 }
 
-/**
- * Renders a titled list of navigational links.
- * Uses next/link (instead of the HeroUI Link) so internal routes get
- * proper client-side navigation and prefetching, per App Router best practice.
- */
+
 export default function FooterLinkColumn({
   title,
   links,
