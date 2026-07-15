@@ -116,7 +116,7 @@ const LoginPage = () => {
               value={formData.email}
               onChange={handleChange("email")}
               fullWidth
-              className="rounded-lg border-[#E2E8F0] focus-visible:border-[#7C3AED] focus-visible:ring-2 focus-visible:ring-[#7C3AED]/30"
+              className="rounded-lg border-[#E2E8F0] focus-visible:border-[#7C3AED] focus-visible:ring-2 focus-visible:ring-[#7C3AED]/30 placeholder:text-muted-foreground"
             />
             <FieldError className="text-xs text-red-600">
               {errors.email}
@@ -139,7 +139,7 @@ const LoginPage = () => {
                 value={formData.password}
                 onChange={handleChange("password")}
                 fullWidth
-                className="rounded-lg border-[#E2E8F0] pr-10 focus-visible:border-[#7C3AED] focus-visible:ring-2 focus-visible:ring-[#7C3AED]/30"
+                className="rounded-lg border-[#E2E8F0] pr-10 focus-visible:border-[#7C3AED] focus-visible:ring-2 focus-visible:ring-[#7C3AED]/30 placeholder:text-muted-foreground"
               />
               <button
                 type="button"
