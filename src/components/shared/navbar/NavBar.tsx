@@ -35,7 +35,7 @@ const NavBar = () => {
   const [user, setUser] = useState<
     | null
     | (Awaited<ReturnType<typeof getSessionUserFromClient>> & {
-        userRole: "admin" | "user";
+        userRole?: "admin" | "user";
       })
   >(null);
 
@@ -50,6 +50,7 @@ const NavBar = () => {
     getSessionUserFromClient().then((sessionUser) => {
       if (isMounted) {
         setUser(sessionUser);
+
         setIsUserLoading(false);
       }
     });
