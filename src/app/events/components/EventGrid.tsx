@@ -13,7 +13,7 @@ interface EventGridProps {
 const EventGrid = ({ events, isLoading, error }: EventGridProps) => {
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {Array.from({ length: DEFAULT_PAGE_SIZE }).map((_, index) => (
           <EventCardSkeleton key={index} />
         ))}

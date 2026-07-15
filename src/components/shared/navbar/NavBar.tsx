@@ -22,7 +22,9 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 // Extra links shown only when a user is logged in
-const USER_NAV_ITEMS: NavItem[] = [
+const USER_NAV_ITEMS: NavItem[] = [{ label: "Profile", href: "/profile" }];
+
+const ADMIN_NAV_ITEMS: NavItem[] = [
   { label: "Add Event", href: "/events/add" },
   { label: "Manage Events", href: "/events/manage" },
   { label: "Profile", href: "/profile" },
@@ -30,9 +32,12 @@ const USER_NAV_ITEMS: NavItem[] = [
 
 const NavBar = () => {
   const router = useRouter();
-  const [user, setUser] = useState<null | Awaited<
-    ReturnType<typeof getSessionUserFromClient>
-  >>(null);
+  const [user, setUser] = useState<
+    | null
+    | (Awaited<ReturnType<typeof getSessionUserFromClient>> & {
+        userRole: "admin" | "user";
+      })
+  >(null);
 
   const [isUserLoading, setIsUserLoading] = useState(true);
 
@@ -72,14 +77,18 @@ const NavBar = () => {
 
   const closeMenu = () => setIsMenuOpen(false);
 
-
   const handleLogout = () => {
     closeMenu();
     authClient.signOut();
     router.push("/login");
   };
 
-  const navItems = user ? [...NAV_ITEMS, ...USER_NAV_ITEMS] : NAV_ITEMS;
+  const navItems =
+    user?.userRole === "admin"
+      ? [...NAV_ITEMS, ...ADMIN_NAV_ITEMS]
+      : user?.userRole === "user"
+        ? [...NAV_ITEMS, ...USER_NAV_ITEMS]
+        : NAV_ITEMS;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#E2E8F0] bg-[#F8FAFC]/95 backdrop-blur-sm">

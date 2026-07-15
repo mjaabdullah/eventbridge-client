@@ -91,7 +91,7 @@ const EventsExplorer = () => {
     },
     [router, pathname, searchParams],
   );
-  console.log(events, "in ex");
+
   return (
     <div className="flex flex-col gap-8">
       <EventControls filters={filters} onChange={updateFilters} />
