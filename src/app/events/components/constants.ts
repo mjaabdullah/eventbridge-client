@@ -28,7 +28,7 @@ export const SORT_OPTIONS: { id: SortOption; label: string }[] = [
   { id: "price_desc", label: "Ticket Price (High to Low)" },
 ];
 
-export const DEFAULT_PAGE_SIZE = 8;
+export const DEFAULT_PAGE_SIZE = 6;
 
 export const DEFAULT_FILTERS: EventFilters = {
   search: "",

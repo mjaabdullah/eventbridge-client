@@ -12,6 +12,7 @@ import type { EventFilters, EventItem, PaginationMeta } from "./types";
 
 const EventsExplorer = () => {
   const [filters, setFilters] = useState<EventFilters>(DEFAULT_FILTERS);
+
   const [events, setEvents] = useState<EventItem[]>([]);
   const [pagination, setPagination] = useState<PaginationMeta | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -50,9 +51,6 @@ const EventsExplorer = () => {
     };
   }, [filters]);
 
-  // const updateFilters = useCallback((partial: Partial<EventFilters>) => {
-  //   setFilters((prev) => ({ ...prev, ...partial, page: 1 }));
-  // }, []);
 
   const router = useRouter();
   const searchParams = useSearchParams();
